@@ -114,7 +114,7 @@ def ejecuta_clasificador_knn_fei(n_training):
             atrib.append(test_attrib[i][a])
         #print("prueba: ", a, " Data:", atrib)
         
-        res = clasificador.knn_classify(atrib)
+        res = clasificador.knn_classify(atrib,10)
         
         index, name = test_labels[a]
         
@@ -154,8 +154,8 @@ def ejecuta_clasificador_knn_iris(n_training):
         atrib = [a1,a2,a3,a4]
         #print("prueba: ", a, " Data:", atrib)
         
-        res = clasificador.knn_classify(atrib)
-        print(res)
+        res = clasificador.knn_classify(atrib,9)
+        #print(res)
         index, name = test_labels[a]
         
         if (name == res[0]):
@@ -163,7 +163,7 @@ def ejecuta_clasificador_knn_iris(n_training):
             #print("Esperado:", name, " Obtenido:", res, "OK")
         else:
             bad = bad +1
-            #print("Esperado:", name, " Obtenido:", res, "FALLÓ")
+            print("Esperado:", name, " Obtenido:", res, "FALLÓ")
             
     good_p = (good/n_testing)*100
     bad_p = (bad/n_testing)*100
@@ -179,18 +179,18 @@ if __name__ == '__main__':
         n_test = 50
         
         # Seleccion de prueba a ejecutar
-        good, bad = ejecuta_clasificador_knn_fei(n_test)
-        #good, bad = ejecuta_clasificador_knn_iris(n_test)
+        #good, bad = ejecuta_clasificador_knn_fei(n_test)
+        good, bad = ejecuta_clasificador_knn_iris(n_test)
         #good, bad = ejecuta_clasificador_bayes_iris(n_test)
         #good, bad = ejecuta_clasificador_bayes_fei(n_test)
         e_good.append(good)
         e_bad.append(bad)
     
-    prom_e_good = round(statistics.mean(e_good))
-    prom_e_bad = round(statistics.mean(e_bad))
+    prom_e_good = round(statistics.mean(e_good),2)
+    prom_e_bad = round(statistics.mean(e_bad),2)
     
-    dev_std_good = statistics.stdev(e_good)
-    dev_std_bad =  statistics.stdev(e_bad)
+    dev_std_good = round(statistics.stdev(e_good),2)
+    dev_std_bad =  round(statistics.stdev(e_bad),2)
     
     print("promedio Good: ", prom_e_good, "% , promedio bad: ", prom_e_bad, "%, # de iteraciones: ", n_iter)
     print("dev std: ", dev_std_good, "% , promedio bad: ", dev_std_bad, "%")
