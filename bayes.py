@@ -5,8 +5,47 @@ Created on Sat Feb 12 22:28:25 2022
 
 @author: miguel
 """
+ # 
+ #  BAYES 
+ #
+ #  EJEMPLO DE USO:
+ #    
+ #    clasificador = N_Bayes()
+ #    clasificador.load_data(train_attrib, train_labels)
+ #    res = clasificador.bayes(atrib)
+ 
+ #  PARAMETROS:
+                
+ #  Arreglo de atributos ([[float]])
+             
+ #  train_attrib = [[Atributo(1 ,1);   Atributo(1 ,2);   Atributo(1 ,..);   Atributo(1 ,N)],
+ #                  [Atributo(2 ,1);   Atributo(2 ,2);   Atributo(2 ,..);   Atributo(2 ,N)],
+ #                  [Atributo(... ,1); Atributo(... ,2); Atributo(... ,..); Atributo(... ,N)],
+ #                  [Atributo(N,1);    Atributo(N,2);    Atributo(N ,..);   Atributo(N,N)]]
+ #  Donde los indices del arreglo corresponden a (# de Atributo, indice de ejemplo)
+ 
+ #  Arreglo de etiquetas
+ #                   cadena de texto 
+ #                   con numero entero        cadena de texto
+ #                         ||                       ||
+ #                         \/                       \/
+ #
+ #  train_labels = [[indice de ejemplo1,   etiqueta del ejemplo1]
+ #                  [indice de ejemplo2,   etiqueta del ejemplo2],
+ #                  [indice de ejemplo..., etiqueta del ejemplo...]
+ #                  [indice de ejemploN,   etiqueta del ejemploN]]
+ #
+ #  Vector de atributos del ejemplo a clasificar
+ 
+ #  atrib = [A1,A2,..,AN]
+ 
+ #  SALIDA:
+     
+ #  [ETIQUETA, WEIGHT]
+ 
 import math
 import statistics
+import numpy as np
 
 class N_Bayes:
     
@@ -69,7 +108,7 @@ class N_Bayes:
         #print(attrib, labels)
         for d in labels:
             nombre = d[1]
-            attrib_index = d[0]
+            attrib_index = int(d[0])
             if (nombre not in clases[0]):
                 clases[0].append(nombre)
                 for a in attrib:

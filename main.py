@@ -9,6 +9,7 @@ import csv_file
 import random
 from bayes import N_Bayes
 from knn import KNN
+import numpy as np
 import imagenes
 import statistics
 
@@ -20,6 +21,7 @@ def ejecuta_clasificador_bayes_iris(n_training):
     print("# datos de entrenamiento:", n_training, ", # de datos prueba:", n_testing)
     # Importa datos
     train_attrib, train_labels, test_attrib, test_labels = csv_file.load_data(file_name, n_training)
+    #print(train_attrib, train_labels, test_attrib, test_labels)
     
     clasificador = N_Bayes()
     #Calcula medias, desviacion estandar, etc.
@@ -180,8 +182,8 @@ if __name__ == '__main__':
         
         # Seleccion de prueba a ejecutar
         #good, bad = ejecuta_clasificador_knn_fei(n_test)
-        good, bad = ejecuta_clasificador_knn_iris(n_test)
-        #good, bad = ejecuta_clasificador_bayes_iris(n_test)
+        #good, bad = ejecuta_clasificador_knn_iris(n_test)
+        good, bad = ejecuta_clasificador_bayes_iris(n_test)
         #good, bad = ejecuta_clasificador_bayes_fei(n_test)
         e_good.append(good)
         e_bad.append(bad)

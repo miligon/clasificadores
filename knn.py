@@ -5,7 +5,45 @@ Created on Thu Feb 24 18:01:50 2022
 
 @author: miguel
 """
-
+ # 
+ #  KNN 
+ #
+ #  EJEMPLO DE USO:
+ #    
+ #    clasificador = KNN()
+ #    clasificador.load_data(train_attrib, train_labels)
+ #    res = clasificador.knn_classify(atrib, k)
+ 
+ #  PARAMETROS:
+                
+ #  Arreglo de atributos ([[float]])
+             
+ #  train_attrib = [[Atributo(1 ,1);   Atributo(1 ,2);   Atributo(1 ,..);   Atributo(1 ,N)],
+ #                  [Atributo(2 ,1);   Atributo(2 ,2);   Atributo(2 ,..);   Atributo(2 ,N)],
+ #                  [Atributo(... ,1); Atributo(... ,2); Atributo(... ,..); Atributo(... ,N)],
+ #                  [Atributo(N,1);    Atributo(N,2);    Atributo(N ,..);   Atributo(N,N)]]
+ #  Donde los indices del arreglo corresponden a (# de Atributo, indice de ejemplo)
+ 
+ #  Arreglo de etiquetas
+ #                   cadena de texto 
+ #                   con numero entero        cadena de texto
+ #                         ||                       ||
+ #                         \/                       \/
+ #
+ #  train_labels = [[indice de ejemplo1,   etiqueta del ejemplo1]
+ #                  [indice de ejemplo2,   etiqueta del ejemplo2],
+ #                  [indice de ejemplo..., etiqueta del ejemplo...]
+ #                  [indice de ejemploN,   etiqueta del ejemploN]]
+ #
+ #  Vector del ejemplo a clasificar
+ 
+ #  atrib = [A1,A2,..,AN]
+ #  k = numero entero mayor a 0
+ 
+ #  SALIDA:
+     
+ #  [ETIQUETA, WEIGHT]
+     
 import numpy as np
 import math
 
@@ -89,6 +127,7 @@ class KNN:
         if (len(vecinos) == 1):
             print("(muestra==test, d=0): ", vecinos[0][1])
             return [vecinos[0][1],100]
+        #print(vecinos)
         res = self.weighted_predict(vecinos)
         #print("Predicción: ", res)
         return res

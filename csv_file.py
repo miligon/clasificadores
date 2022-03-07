@@ -33,7 +33,7 @@ def load_data(ruta, n_muestras_train = 50):
             attrib_e[1].append(float(sepal_w))
             attrib_e[2].append(float(petal_l))
             attrib_e[3].append(float(petal_w))
-            labels_e.append((i,label))
+            labels_e.append([int(i),label])
         else:
             #print("pruebas", i, buffer[i])
             sepal_l, sepal_w, petal_l, petal_w, label = buffer[i].split(",")
@@ -41,6 +41,6 @@ def load_data(ruta, n_muestras_train = 50):
             attrib_p[1].append(float(sepal_w))
             attrib_p[2].append(float(petal_l))
             attrib_p[3].append(float(petal_w))
-            labels_p.append((i-n_muestras_train,label))            
+            labels_p.append([int(i-n_muestras_train),label])            
     
-    return attrib_e, labels_e, attrib_p, labels_p
+    return np.array(attrib_e), np.array(labels_e), np.array(attrib_p), np.array(labels_p)

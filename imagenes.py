@@ -82,7 +82,7 @@ def load_data(dataset_path, n_muestras_train = 25):
                 label = "hombre"
             labels_p.append((i-n_muestras_train,label))
             
-    return attrib_e, labels_e, attrib_p, labels_p
+    return np.array(attrib_e), np.array(labels_e), np.array(attrib_p), np.array(labels_p)
         
 
 
