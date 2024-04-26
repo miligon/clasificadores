@@ -1,9 +1,16 @@
-# Practicas de clasificadores de imagenes
+# Practicas de IA (clasificadores de imagenes)
 
-Los algoritmos implementados son KNN y teorema de bayes
+Implementación de los algoritmos KNN y teorema de bayes, para la clasificación de imágenes
 
 Requisitos:
-- pip install numpy
+```
+pip install numpy
+```
+
+Para ejecutar:
+```
+python main.py
+```
 
 Iris Data Set:
 https://archive.ics.uci.edu/ml/datasets/iris
